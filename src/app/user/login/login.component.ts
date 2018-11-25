@@ -38,12 +38,14 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit() {
-  this.isSubmitted = true;
+    this.authService.loading = true;
+    setTimeout(() => {
+      this.isSubmitted = true;
 
-  if(this.loginForm.invalid) {
-    return;
-  }
-
-  this.authService.login();
+      if(this.loginForm.invalid) {
+        return;
+      }
+      this.authService.login();
+    }, 2000);
   }
 }

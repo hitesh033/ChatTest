@@ -4,36 +4,28 @@
     <div class="inbox_msg">
       <div class="mesgs">
         <div class="msg_history">
+          <div *ngFor="let chatMsg of chatMsgs">
           <div class="incoming_msg">
             <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt=""> </div>
             <div class="received_msg">
               <div class="received_withd_msg">
-                <p>Hey, Smith ! I am L-BOT. Thanks for choosing Learning BOT. 
-You seem to be the First User. Would you like to know how I can assist you ?</p>
-                <span class="time_date"> 11:01 AM    |    June 9</span></div>
+                <p>{{chatMsg}}</p>
+                <span class="time_date"> {{currentDate | date:'h:mm a'}}    |    June 9</span></div>
             </div>
           </div>
           <div class="outgoing_msg">
             <div class="sent_msg">
-              <p>HI BOT, Yes pls</p>
+              <p>{{chatMsg}}</p>
               <span class="time_date"> 11:01 AM    |    June 9</span> 
               </div>
               <div class="outgoing_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt=""> </div>
           </div>
-          <div class="incoming_msg">
-            <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt=""> </div>
-            <div class="received_msg">
-              <div class="received_withd_msg">
-                <p>Sure. I can help you build a new KT and help in analyzing the KT documents.
-What would you like to start with ?</p>
-                <span class="time_date"> 11:01 AM    |    Yesterday</span></div>
-            </div>
-          </div>
+        </div>
         </div>
         <div class="type_msg">
           <div class="input_msg_write">
-            <input type="text" class="write_msg" placeholder="Type a message" />
-            <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+            <input type="text" class="write_msg" placeholder="Type a message" #userChatInput />
+            <button class="msg_send_btn" type="button" (click)="onEnter(userChatInput)"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
           </div>
         </div>
       </div>
